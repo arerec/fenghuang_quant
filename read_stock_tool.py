@@ -5,6 +5,7 @@ __Created__ = '2018/4/10'
 
 import csv
 import numpy as np
+import matplotlib.pyplot as plt
 from config import ORIGINAL_DATA_FILEPATH, MAX_DAY
 
 class ReadStockTool(object):
@@ -31,9 +32,17 @@ class ReadStockTool(object):
         画图
         :return:
         """
+        stockdata_list = self.read_one_stock()
+        print(stockdata_list)
+        y = stockdata_list
+        x = range(1, MAX_DAY + 1)
+        plt.ylabel("价格")
+        plt.plot(x, y)
+        plt.show()
+
+
 
 
 if __name__ == "__main__":
     rst = ReadStockTool(102419)
-    data = rst.read_one_stock()
-    print(data)
+    rst.draw_chart()
